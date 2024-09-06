@@ -10,7 +10,7 @@
 
 <style lang="postcss">
   :global(html) {
-    background-color: rgb(30, 32, 48);
+    background-color: rgb(24, 25, 38);
   }
 
   :global(h1) {

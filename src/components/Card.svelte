@@ -19,7 +19,7 @@
 
 <div class="card text-green-100 flex flex-row {isOdd ? 'flex-row-reverse' : ''} h-full w-5/6">
 	<section class="w-1/2 h-full gradient-bg p-20 place-items-center {isOdd ? 'rounded-tr-lg rounded-br-lg' : 'rounded-tl-lg rounded-bl-lg'}">
-		<div class="flex flex-col bg-slate-700 -mt-5 my-auto rounded-lg drop-shadow-lg">
+		<div class="flex flex-col logos-bg -mt-5 my-auto rounded-lg drop-shadow-lg">
 			<img src={agImg} alt="tractor" class="rounded-t-lg" />
 			<div class="grid grid-cols-3 gap-6 p-10 place-items-center place-content-evenly">
 				<CardImg src={jsLogo} />
@@ -31,7 +31,7 @@
 			</div>
 		</div>
 	</section>
-	<section class="text-left text-xl w-1/2 h-full px-20 pt-14 place-items-center leading-relaxed experience-text {isOdd ? 'rounded-tl-lg rounded-bl-lg' : 'rounded-tr-lg rounded-br-lg'}">
+	<section class="text-left text-xl w-1/2 h-full px-20 pt-14 place-items-center leading-relaxed text-bg {isOdd ? 'rounded-tl-lg rounded-bl-lg' : 'rounded-tr-lg rounded-br-lg'}">
 		<h1 class="text-4xl font-weight-bold mb-2">{title} <a href="#">link</a></h1>
 		<h2 class="text-3xl font-weight-semibold">{subtitle}</h2>
 		<h2 class="text-2xl font-weight-semibold mb-5">2021 - 2022</h2>
@@ -76,7 +76,11 @@
 		);
 	}
 
-	.experience-text {
+	.text-bg {
+		background-color: rgb(36, 39, 58);
+	}
+
+	.logos-bg {
 		background-color: rgb(54, 58, 79);
 	}
 

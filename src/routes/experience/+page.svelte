@@ -22,6 +22,7 @@
                             idx={idx}
                             title="Telus Agriculture"
                             subtitle="Software Engineer"
+                            link="https://www.telus.com/agcg/products/agronomy"
                             text="
                             In 2021, I joined the Web UI team at Telus Agriculture, one of the largest agricultural
                             management platforms in the world and is used daily by over 225,000 large-scale agricultural

@@ -1,28 +1,28 @@
 <script>
 	export let src;
-
-	const emberSticker = src.includes('ember');
 	const tailwindSticker = src.includes('tailwind');
-	const javaScript = src.includes('js') || src.includes('i18n');
     const typeScriptSticker = src.includes('typescript');
-    const largeSticker = src.includes('qunit');
 </script>
 
 <div
-	class:ember-sticker={emberSticker}
 	class:tailwind-sticker={tailwindSticker}
-	class:js-sticker={javaScript}
     class:ts-sticker={typeScriptSticker}
-    class:large-sticker={largeSticker}
     class="sticker"
 >
-	<img {src} alt="ember-logo" />
+	{#if (tailwindSticker || typeScriptSticker)}
+		<img src={src} />
+	{:else}
+		<i class="text-4xl fa-brands {src}"></i>
+	{/if}
 </div>
 
 <style>
+	svg {
+		color: 'red';
+	}
 
     .sticker { 
-        max-width: 50%;
+        max-width: 75px;
     }
 
     .large-sticker {
@@ -30,7 +30,7 @@
     }
 
 	.ember-sticker {
-        max-width: 70%;
+        max-width: 100px;
 	}
 
 	.tailwind-sticker {
@@ -38,12 +38,11 @@
 	}
 
     .ts-sticker {
-        max-width: 100%;
+        max-width: 50px;
     }
 
 	.js-sticker {
-		max-width: 35%;
-
+		max-width: 50px;
 	}
 
 </style>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Card from '../../components/Card.svelte';
+	import ExperienceCard from '../../components/ExperienceCard.svelte';
 	import ExperienceContainer from '../../components/ExperienceContainer.svelte';
     import experienceList from '$lib/experienceList';
 </script>
@@ -10,16 +10,9 @@
         {#each experienceList as exp, idx}
                 <div class="w-full h-full mb-40">
                     <ExperienceContainer>
-                        <Card
+                        <ExperienceCard
                             idx={idx}
-                            title={exp.title}
-                            years={exp.years}
-                            company={exp.company}
-                            titleTwo={exp.titleTwo}
-                            yearsTwo={exp.yearsTwo}
-                            link={exp.link}
-                            text={exp.about}
-                            tech={exp.tech}
+                            exp={exp}
                         />
                     </ExperienceContainer>
                 </div>

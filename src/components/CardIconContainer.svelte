@@ -75,7 +75,7 @@
 
 	{#if hasSubTech}
 		<div
-			class="grid grid-rows-2 grid-flow-col place-items-center justify-between h-full bg-slate-700/50 rounded-lg h-3/4 w-3/4"
+			class="grid grid-rows-2 grid-flow-col place-items-center justify-between bg-slate-700/50 rounded-lg h-3/4 w-3/4"
 		>
 			{#each subTech as tech}
 				<CardIcon src={tech} />

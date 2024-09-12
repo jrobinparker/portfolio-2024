@@ -1,16 +1,7 @@
 <script>
 	import CardImg from './CardImg.svelte';
-
-	import agImg from '$lib/agricultural-workers.webp';
-	import tailwindLogo from '$lib/tailwind-logo.svg';
-	import typeScriptLogo from '$lib/typescript-logo.png';
 	import { onMount } from 'svelte';
-
-	export let text;
-	export let title;
-	export let subtitle;
-	export let idx;
-	export let link;
+	export let text, title, years, company, titleTwo, yearsTwo, idx, link, tech;
 
 	const COLORS = [
 		'hsl(10deg, 56%, 91%)',
@@ -28,6 +19,12 @@
 		'hsl(217deg, 92%, 76%)',
 		'hsl(232deg, 97%, 85%)'
 	];
+
+	const mainTech = [tech[0], tech[1], tech[2]];
+	const subTech = tech.slice(3, tech.length);
+
+	const hasSubTech = !!subTech.length;
+	const hasSecondTitle = yearsTwo && titleTwo;
 
 	const shuffledColors = COLORS.map((val) => ({ val, sort: Math.random() }))
 		.sort((a, b) => a.sort - b.sort)
@@ -47,45 +44,63 @@
 
 		for (let i = 0; i < randomNumOfLayers; i++) {
 			const start = Math.floor(Math.random() * 100);
-			const end = Math.floor(Math.random() * 100); 
+			const end = Math.floor(Math.random() * 100);
 
-			meshGradients.push(`radial-gradient(at ${Number(start)}% ${Number(end)}%, ${shuffledColors[i]} 0px, transparent 50%)`);
+			meshGradients.push(
+				`radial-gradient(at ${Number(start)}% ${Number(end)}%, ${shuffledColors[i]} 0px, transparent 50%)`
+			);
 		}
 
 		meshBg = `background-image: ${meshGradients.join(', ')};`;
 	});
 </script>
 
-<div class="card text-green-100 flex flex-row {isOdd ? 'flex-row-reverse' : ''} h-full w-5/6">
+<div class="card text-green-100 flex flex-row {isOdd ? 'flex-row-reverse' : ''} h-5/6 w-5/6">
 	<section
 		id="gradient-bg"
 		style={meshBg}
-		class="w-1/2 h-full p-20 place-items-center {isOdd
+		class="w-1/2 h-full p-20 place-items-center grid grid-rows-2 grid-flow-col {isOdd
 			? 'rounded-tr-lg rounded-br-lg'
 			: 'rounded-tl-lg rounded-bl-lg'}"
 	>
-		<div class="flex flex-col h-full logos-bg -mt-5 rounded-lg drop-shadow-lg">
-			<img src={agImg} alt="tractor" class="rounded-t-lg h-2/3 aspect-auto" />
-			<div class="grid grid-cols-3 h-1/3 gap-6 p-10 place-items-center place-content-evenly">
-				<CardImg src={'fa-js'} />
-				<CardImg src={'fa-ember'} />
-				<CardImg src={tailwindLogo} />
-				<CardImg src={typeScriptLogo} />
-				<CardImg src={'fa-react'} />
-				<CardImg src={'fa-bootstrap'} />
+			<div class="h-full w-full flex place-content-center place-items-center">
+				<CardImg src={mainTech[0]} />
 			</div>
-		</div>
+			<div class="h-full w-full flex place-content-center place-items-center">
+				<CardImg src={mainTech[1]} />
+			</div>
+			<div class="h-full w-full flex place-content-center place-items-center {!hasSubTech ? 'row-span-2' : ''}">
+				<CardImg src={mainTech[2]} />
+			</div>
+
+			{#if hasSubTech}
+				<div
+					class="grid grid-rows-2 grid-flow-col place-items-center justify-between h-full bg-slate-700/50 rounded-lg h-3/4 w-3/4"
+				>
+					{#each subTech as tech}
+						<CardImg src={tech} />
+					{/each}
+				</div>
+			{/if}
 	</section>
 	<section
 		class="text-left text-xl w-1/2 h-full box-border px-20 pt-14 place-items-center leading-relaxed text-bg {isOdd
 			? 'rounded-tl-lg rounded-bl-lg'
 			: 'rounded-tr-lg rounded-br-lg'}"
 	>
-		<h1 class="text-4xl font-weight-bold mb-2">
-			{title} <a href={link} target="_blank"><i class="fa-solid fa-link"></i></a>
+		<h1 class="text-4xl md:text-3xl font-weight-bold mb-2">
+			{company}
 		</h1>
-		<h2 class="text-3xl font-weight-semibold">{subtitle}</h2>
-		<h2 class="text-2xl font-weight-semibold mb-5">2021 - 2022</h2>
+		<h2 class="text-3xl md:text-2xl font-weight-semibold">
+			{title} <a href={link} target="_blank"><i class="fa-solid fa-link"></i></a>
+		</h2>
+		<h2 class="text-2xl md:text-xl font-weight-semibold mb-5">{years}</h2>
+		{#if hasSecondTitle}
+		<h2 class="text-3xl md:text-2xl font-weight-semibold">
+			{titleTwo}
+		</h2>
+		<h2 class="text-2xl md:text-xl font-weight-semibold mb-5">{yearsTwo}</h2>
+		{/if}
 		<p class="text-xl">
 			{text}
 
@@ -107,10 +122,6 @@
 
 	.text-bg {
 		background-color: rgb(36, 39, 58);
-	}
-
-	.logos-bg {
-		background-color: rgb(54, 58, 79);
 	}
 
 	h1 {

@@ -1,48 +1,65 @@
 <script>
 	export let src;
-	const tailwindSticker = src.includes('tailwind');
-    const typeScriptSticker = src.includes('typescript');
+
+	const ember = src.includes('ember') || src.includes('sketch');
+	const javaScript = src.includes('js');
+	const react = src.includes('react');
+	const tailwind = src.includes('tailwind');
+    const typeScript = src.includes('ts') || src.includes('jira');
+	const python = src.includes('python');
+	const sentry = src.includes('sentry');
+	const apple = src.includes('apple');
+	const php = src.includes('php');
+	const rails = src.includes('rails');
 </script>
 
 <div
-	class:tailwind-sticker={tailwindSticker}
-    class:ts-sticker={typeScriptSticker}
-    class="sticker"
+	class:ember={ember}
+	class:tailwind={tailwind}
+	class:javascript={javaScript}
+    class:typescript={typeScript}
+	class:react={react}
+	class:python={python}
+	class:apple={apple}
+	class:php={php}
+	class:rails={rails}
+	class:sentry={sentry}
 >
-	{#if (tailwindSticker || typeScriptSticker)}
-		<img src={src} />
-	{:else}
-		<i class="text-4xl fa-brands {src}"></i>
-	{/if}
+	<img {src} alt="ember-logo" />
 </div>
 
 <style>
-	svg {
-		color: 'red';
+	.react, .python {
+		width: 60%;
 	}
 
-    .sticker { 
-        max-width: 75px;
+	.tailwind {
+		width: 70%;
+	}
+
+	.sentry {
+		fill: white;
+		width: 45%;
+	}
+
+    .typescript, .javascript {
+        width: 60%;
+		border-radius: 5%;
     }
 
-    .large-sticker {
-        max-width: 40%;
-    }
-
-	.ember-sticker {
-        max-width: 100px;
+	.javascript img {
+		border-radius: 5%;
+	}
+	
+	.gh, .sentry {
+		@apply text-zinc-50
 	}
 
-	.tailwind-sticker {
-		padding: 10px;
+	.apple, .rails {
+		width: 40%;
 	}
 
-    .ts-sticker {
-        max-width: 50px;
-    }
-
-	.js-sticker {
-		max-width: 50px;
+	.php {
+		width: 70%;
 	}
-
 </style>

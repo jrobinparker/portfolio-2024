@@ -1,3 +1,3 @@
-<div class="flex flex-row self-center place-content-center h-5/6 items-center">
+<div class="flex flex-row self-center place-content-center h-full items-center">
     <slot />
 </div>

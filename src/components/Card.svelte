@@ -89,10 +89,10 @@
 			: 'rounded-tr-lg rounded-br-lg'}"
 	>
 		<h1 class="text-4xl md:text-3xl font-weight-bold mb-2">
-			{company}
+			{company} <a href={link} target="_blank"><i class="fa-solid fa-link"></i></a>
 		</h1>
 		<h2 class="text-3xl md:text-2xl font-weight-semibold">
-			{title} <a href={link} target="_blank"><i class="fa-solid fa-link"></i></a>
+			{title}
 		</h2>
 		<h2 class="text-2xl md:text-xl font-weight-semibold mb-5">{years}</h2>
 		{#if hasSecondTitle}

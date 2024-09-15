@@ -22,7 +22,7 @@
     const experience = {
         icon: '',
         text: 'Experience',
-        url: '#'
+        url: '/experience'
     };
 
     const actionIcons = [gitHub, linkedIn, about, experience];
